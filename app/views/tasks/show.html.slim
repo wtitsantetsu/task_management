@@ -1,0 +1,26 @@
+h1　タスクの詳細
+
+
+.nav.justify-content-end
+    = link_to '一覧', tasks_path, class: 'nav-link'
+table.table.table-hover
+    tbody
+     tr
+      th= Task.human_attribute_name('ID')
+      td= @task.id
+     tr
+      th= Task.human_attribute_name('名称')
+      td= @task.name
+     tr
+      th= Task.human_attribute_name('詳細')
+      td= simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div")
+     tr
+      th= Task.human_attribute_name('作成日時')
+      td= @task.created_at
+     tr
+      th= Task.human_attribute_name('更新日時')
+      td= @task.updated_at
+
+= link_to '編集', edit_task_path, class: 'btn btn-primary my-3'
+= button_to '削除', @task,method: :delete, form: { data: { turbo_confirm: "タスク「#{@task.name}」を削除します。よろしいですか？"}},class: 'btn btn-danger'
+
