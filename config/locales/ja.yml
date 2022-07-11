@@ -16,11 +16,11 @@ ja:
         created_at: 登録日時
         updated_at: 更新日時
 
-    helpers:
-      select:
-        prompt: 選択してください
-      submit:
-        create: 登録する
-        submit: 保存する
-        update: 更新する
+    # helpers:
+    #   select:
+    #     prompt: 選択してください
+    #   submit:
+    #     create: 登録する
+    #     submit: 保存する
+    #     update: 更新する
 
