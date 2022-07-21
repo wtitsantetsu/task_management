@@ -13,12 +13,12 @@ class SessionsController < ApplicationController
     else
       render :new
     end
-    
+
   end
 
   def destroy
     reset_session
-    redirect_to root_path, notice: 'ログアウトしました。'
+    redirect_to root_path, notice: 'ログアウトしました。', status: :see_other
   end
 
   private

@@ -4,11 +4,11 @@ h1 タスクの新規登録
     = link_to '一覧', tasks_path, class: 'nav_link'
 
 - if @task.errors.present?
-  ul#error_explanation 
+  ul#error_explanation
     - @task.errors.full_messages.each do |message|
-      li= message 
+      li= message
 
-= form_with model: @task, local: true, url: confirm_new_task_path do |f|
+= form_with model: @task, url: confirm_new_task_path, data: {turbo: false} do |f|
     .form-group
         = f.label :name
         = f.text_field :name, class: 'form-control', id: 'task_name'

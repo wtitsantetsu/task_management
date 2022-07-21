@@ -9,7 +9,7 @@ ja:
     models:
       task: タスク
     attributes:
-      tasks:
+      task:
         id: ID
         name: 名称
         description: 詳しい説明
@@ -23,4 +23,5 @@ ja:
         password: パスワード
         password_confirmation: パスワード(確認)
         created_at: 登録解除
-        update_at: 更新日時
+        updated_at: 更新日時
+
