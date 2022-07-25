@@ -5,7 +5,15 @@ class TasksController < ApplicationController
     @q = current_user.tasks.ransack(params[:q])
     @tasks = @q.result(distinct: true)
     # @tasks = Task.where(user_id: current_user.id).order(created_at: :desc)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%M%d%S')}.csv"}
+    end
+  end
 
+  def import
+    current_user.tasks.import(params[:file])
+    redirect_to tasks_url, notice: "タスクを追加しました"
   end
 
   def show
@@ -59,7 +67,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description)
+    params.require(:task).permit(:name, :description, :image)
   end
 
   def set_task

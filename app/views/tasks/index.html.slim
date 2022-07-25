@@ -33,3 +33,8 @@ table.table.table-hover
                 = link_to '編集', edit_task_path(task),class: 'btn btn-primary mr-3'
                 = button_to '削除', task, method: :delete, form: { data: { turbo_confirm: "タスク「#{task.name}」を削除します。よろしいですか？"}},class: 'btn btn-danger'
 
+= link_to 'エクスポート', tasks_path(format: :csv), class: 'btn btn-primary mb-3'
+
+= form_tag import_tasks_path, multipart: true, class: 'mb-3' do
+  =file_field_tag :file_field
+  =submit_tag "インポート", class: 'btn btn-primary'
