@@ -17,6 +17,8 @@ h1 タスク一覧
 / :created_at_date_equals, placeholder: t(:date_format)
 
 .mb-3
+  = paginate @tasks
+  = page_entries_info @tasks
 table.table.table-hover
 
     thead.thead-default
@@ -36,5 +38,5 @@ table.table.table-hover
 = link_to 'エクスポート', tasks_path(format: :csv), class: 'btn btn-primary mb-3'
 
 = form_tag import_tasks_path, multipart: true, class: 'mb-3' do
-  =file_field_tag :file_field
+  =file_field_tag :file
   =submit_tag "インポート", class: 'btn btn-primary'
