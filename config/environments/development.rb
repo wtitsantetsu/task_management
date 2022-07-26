@@ -71,4 +71,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   # config.i18n.default_locale = :ja
   config.active_job.queue_adapter = :sidekiq
+
+  config.logger = Logger.new('log/development.log', 'daily')
+  config.custom_logger = Logger.new('log/custom.log', 'weekly')
 end
