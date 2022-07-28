@@ -28,10 +28,10 @@ table.table
             th
     tbody
         - @tasks.each do |task|
-            tr
-             td= link_to task.name, task
-             td= task.created_at
-             td
+          tr id="#{dom_id task}"
+            td= link_to task.name, task
+            td= task.created_at
+            td
                 = link_to '編集', edit_task_path(task),class: 'btn btn-primary mr-3'
                 = button_to '削除', task, method: :delete, form: { data: { turbo_confirm: "タスク「#{task.name}」を削除します。よろしいですか？"}},class: 'btn btn-danger'
 
